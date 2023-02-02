@@ -119,8 +119,9 @@ if __name__ == '__main__':
                 
                 rate.sleep()
                 
-            except:
+            except Exception as e:
                 failed = True
+                print(e)
                 print("No connection to roscore")
 
            
