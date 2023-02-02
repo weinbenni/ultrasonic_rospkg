@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+#!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 import rospy
@@ -24,10 +26,9 @@ GPIO_ECHO4 = 12
 GPIO_TRIGGER5 = 26
 GPIO_ECHO5 = 19
 #set GPIO Pins6
-GPIO_TRIGGER6 = 13
-GPIO_ECHO6 = 6
+GPIO_TRIGGER6 = 9
+GPIO_ECHO6 = 11
 
-GPIO.setwarnings(False)
  
 #set GPIO direction (IN / OUT)
 GPIO.setup(GPIO_TRIGGER1, GPIO.OUT)
@@ -78,7 +79,7 @@ def distance(GPIO_TRIGGER, GPIO_ECHO):
 def publishSensor(sensor,measRange):
     pub = rospy.Publisher(sensor, Range, queue_size = 10)
     rospy.init_node('ultrasonic_publisher', anonymous = True)
-    
+    rate = rospy.Rate(3)
     msg = Range()
     msg.header.frame_id = sensor
     msg.field_of_view = 50/146.0*3.14159
@@ -97,31 +98,22 @@ if __name__ == '__main__':
         while True:
             try:
                 rospy.get_master().getPid()
-                
-                rate = rospy.Rate(1)
+
                 dist1 = distance(GPIO_TRIGGER1,GPIO_ECHO1)
-                time.sleep(0.001)
-                dist2 = distance(GPIO_TRIGGER2,GPIO_ECHO2)
-                time.sleep(0.001)
-                dist3 = distance(GPIO_TRIGGER3,GPIO_ECHO3)
-                time.sleep(0.001)
-                dist4 = distance(GPIO_TRIGGER4,GPIO_ECHO4)
-                time.sleep(0.001)
-                dist5 = distance(GPIO_TRIGGER5,GPIO_ECHO5)
-                time.sleep(0.001)
-                dist6 = distance(GPIO_TRIGGER6,GPIO_ECHO6)
                 publishSensor("US1", dist1 )
+                dist2 = distance(GPIO_TRIGGER2,GPIO_ECHO2)
                 publishSensor("US2", dist2 )
-                publishSensor("US3", dist3 )
-                publishSensor("US4", dist4 )
-                publishSensor("US5", dist5 )
+                dist3 = distance(GPIO_TRIGGER3,GPIO_ECHO3)
+                publishSensor("US3", dist3 ) 
+                dist4 = distance(GPIO_TRIGGER4,GPIO_ECHO4)
+                publishSensor("US4", dist4 ) 
+                dist5 = distance(GPIO_TRIGGER5,GPIO_ECHO5)
+                publishSensor("US5", dist5 ) 
+                dist6 = distance(GPIO_TRIGGER6,GPIO_ECHO6)
                 publishSensor("US6", dist6 ) 
-                
-                rate.sleep()
-                
-            except Exception as e:
+            
+            except:
                 failed = True
-                print(e)
                 print("No connection to roscore")
 
            
