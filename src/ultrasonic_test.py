@@ -8,17 +8,23 @@ from sensor_msgs.msg import Range
 GPIO.setmode(GPIO.BCM)
  
 #set GPIO Pins1
-GPIO_TRIGGER1 = 24
-GPIO_ECHO1 = 23
+GPIO_TRIGGER1 = 14
+GPIO_ECHO1 = 15
 #set GPIO Pins2
-GPIO_TRIGGER2 = 14
-GPIO_ECHO2 = 15
+GPIO_TRIGGER2 = 23
+GPIO_ECHO2 = 24
 #set GPIO Pins3
 GPIO_TRIGGER3 = 25
 GPIO_ECHO3 = 8
 #set GPIO Pins4
-GPIO_TRIGGER4 = 25
-GPIO_ECHO4 = 8
+GPIO_TRIGGER4 = 7
+GPIO_ECHO4 = 12
+#set GPIO Pins5
+#GPIO_TRIGGER4 = 7
+#GPIO_ECHO4 = 12
+#set GPIO Pins6
+#GPIO_TRIGGER4 = 7
+#GPIO_ECHO4 = 12
 
  
 #set GPIO direction (IN / OUT)
@@ -30,6 +36,15 @@ GPIO.setup(GPIO_ECHO2, GPIO.IN)
 #set GPIO direction (IN / OUT)
 GPIO.setup(GPIO_TRIGGER3, GPIO.OUT)
 GPIO.setup(GPIO_ECHO3, GPIO.IN)
+#set GPIO direction (IN / OUT)
+GPIO.setup(GPIO_TRIGGER4, GPIO.OUT)
+GPIO.setup(GPIO_ECHO4, GPIO.IN)
+#set GPIO direction (IN / OUT)
+GPIO.setup(GPIO_TRIGGER5, GPIO.OUT)
+GPIO.setup(GPIO_ECHO5, GPIO.IN)
+#set GPIO direction (IN / OUT)
+GPIO.setup(GPIO_TRIGGER6, GPIO.OUT)
+GPIO.setup(GPIO_ECHO6, GPIO.IN)
  
 def distance(GPIO_TRIGGER, GPIO_ECHO):
     # set Trigger to HIGH
@@ -87,11 +102,11 @@ if __name__ == '__main__':
                 publishSensor("US2", dist2 )
                 dist3 = distance(GPIO_TRIGGER3,GPIO_ECHO3)
                 publishSensor("US3", dist3 ) 
-                dist4 = distance(GPIO_TRIGGER3,GPIO_ECHO3)
+                dist4 = distance(GPIO_TRIGGER4,GPIO_ECHO4)
                 publishSensor("US4", dist4 ) 
-                dist5 = distance(GPIO_TRIGGER3,GPIO_ECHO3)
+                dist5 = distance(GPIO_TRIGGER5,GPIO_ECHO5)
                 publishSensor("US5", dist5 ) 
-                dist6 = distance(GPIO_TRIGGER3,GPIO_ECHO3)
+                dist6 = distance(GPIO_TRIGGER6,GPIO_ECHO6)
                 publishSensor("US6", dist6 ) 
             
             except:
