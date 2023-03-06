@@ -2,7 +2,7 @@
 
 
 # -------------------------------------------------------------------------------------------------------------
-# Source:   Copyright © Hochschule München, FK 04, Prof. Jürgen Plate und die Autoren
+# Source:   Copyright © Hochschule Muenchen, FK 04, Prof. Juergen Plate und die Autoren
 # URL:      https://netzmafia.ee.hm.edu/skripten/hardware/RasPi/Projekt-Ultraschall/index.html - 06.03.2023
 # adapted:  Weinhaeupl Benjamin -- FHOoe - Campus Wels - 06.03.2023
 #--------------------------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ GPIO.setup(GPIO_ECHO5, GPIO.IN)
 GPIO.setup(GPIO_TRIGGER6, GPIO.OUT)
 GPIO.setup(GPIO_ECHO6, GPIO.IN)
 
-#Echo Interrupt rücksetzen
+#Echo Interrupt ruecksetzen
 GPIO.remove_event_detect(GPIO_ECHO1)
 GPIO.remove_event_detect(GPIO_ECHO2)
 GPIO.remove_event_detect(GPIO_ECHO3)
@@ -136,17 +136,17 @@ try:
 
   while True:
     Dist1 = measure_range(GPIO_TRIGGER1)
-    publishSensor("US1", Dist1)
+    publishSensor("sonar_front_link", Dist1)
     Dist2 = measure_range(GPIO_TRIGGER2)
-    publishSensor("US2", Dist2)
+    publishSensor("sonar_front_left_link", Dist2)
     Dist3 = measure_range(GPIO_TRIGGER3)
-    publishSensor("US3", Dist3)
+    publishSensor("sonar_front_right_link", Dist3)
     Dist4 = measure_range(GPIO_TRIGGER4)
-    publishSensor("US4", Dist4)
+    publishSensor("sonar_back_link", Dist4)
     Dist5 = measure_range(GPIO_TRIGGER5)
-    publishSensor("US5", Dist5)
+    publishSensor("sonar_back_left_link", Dist5)
     Dist6 = measure_range(GPIO_TRIGGER6)
-    publishSensor("US6", Dist6)
+    publishSensor("sonar_back_right_link", Dist6)
 
 # reset GPIO settings if user pressed Ctrl+C
 except KeyboardInterrupt:
