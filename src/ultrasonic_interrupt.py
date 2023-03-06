@@ -2,7 +2,7 @@
 
 
 # -------------------------------------------------------------------------------------------------------------
-# Source:   Copyright © Hochschule Muenchen, FK 04, Prof. Juergen Plate und die Autoren
+# Source:   Copyright Hochschule Muenchen, FK 04, Prof. Juergen Plate und die Autoren
 # URL:      https://netzmafia.ee.hm.edu/skripten/hardware/RasPi/Projekt-Ultraschall/index.html - 06.03.2023
 # adapted:  Weinhaeupl Benjamin -- FHOoe - Campus Wels - 06.03.2023
 #--------------------------------------------------------------------------------------------------------------
