@@ -109,7 +109,7 @@ def measure(x):                 # Callback-Funktion fuer ECHO
   global stopp
   global distance
   start = time.time()
-  if not GPIO_ECHO1 and not GPIO_ECHO2 and not GPIO_ECHO3 and not GPIO_ECHO4 and not GPIO_ECHO5 and not GPIO_ECHO6 :     # fallende Flanke, Endezeit speichern
+  if not GPIO.input(GPIO_ECHO1) and not GPIO.input(GPIO_ECHO2) and not GPIO.input(GPIO_ECHO3) and not GPIO.input(GPIO_ECHO4) and not GPIO.input(GPIO_ECHO5) and not GPIO.input(GPIO_ECHO6) :     # fallende Flanke, Endezeit speichern
     stopp = time.time()
     delta = stopp - start       # Zeitdifferenz und Entfernung berechnen
     distance = delta * SPEED_2
