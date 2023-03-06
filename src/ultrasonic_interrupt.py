@@ -83,7 +83,7 @@ def publishSensor(sensor,measRange):
     msg.min_range = 0.02
     msg.range = measRange
     
-    rospy.loginfo(msg)
+    #rospy.loginfo(msg)
     pub.publish(msg)
 
 
@@ -108,8 +108,9 @@ def measure(x):                 # Callback-Funktion fuer ECHO
   global start
   global stopp
   global distance
-  start = time.time()
-  if not GPIO.input(GPIO_ECHO1) and not GPIO.input(GPIO_ECHO2) and not GPIO.input(GPIO_ECHO3) and not GPIO.input(GPIO_ECHO4) and not GPIO.input(GPIO_ECHO5) and not GPIO.input(GPIO_ECHO6) :     # fallende Flanke, Endezeit speichern
+  if  GPIO.input(GPIO_ECHO1) or GPIO.input(GPIO_ECHO2) or GPIO.input(GPIO_ECHO3) or GPIO.input(GPIO_ECHO4) or GPIO.input(GPIO_ECHO5) or GPIO.input(GPIO_ECHO6) :
+    start = time.time()
+  elif not GPIO.input(GPIO_ECHO1) and not GPIO.input(GPIO_ECHO2) and not GPIO.input(GPIO_ECHO3) and not GPIO.input(GPIO_ECHO4) and not GPIO.input(GPIO_ECHO5) and not GPIO.input(GPIO_ECHO6) :     # fallende Flanke, Endezeit speichern
     stopp = time.time()
     delta = stopp - start       # Zeitdifferenz und Entfernung berechnen
     distance = delta * SPEED_2
@@ -122,6 +123,7 @@ def measure_range(TRIG):            # Bildet Mittelwert von BURST Messungen
     pulse(TRIG)                     # Messung starten
     time.sleep(0.040)           # Warten, bis Messung zuende
     values.append(distance)     # Wert im Array speichern und aufsummieren
+    print("Messwert: %1.1f" % distance) # Kontrollausgabe
     sum = sum + values[i]
   return sum/BURST;             # Mittelwert zurueckgeben
 
