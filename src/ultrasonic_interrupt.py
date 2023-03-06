@@ -14,6 +14,7 @@ from sensor_msgs.msg import Range
 
 #GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
  
 #set GPIO Pins1
 GPIO_TRIGGER1 = 14
@@ -110,11 +111,11 @@ def measure(x):                 # Callback-Funktion fuer ECHO
   global distance
   if  GPIO.input(GPIO_ECHO1)==1 or GPIO.input(GPIO_ECHO2)==1 or GPIO.input(GPIO_ECHO3)==1 or GPIO.input(GPIO_ECHO4)==1 or GPIO.input(GPIO_ECHO5)==1 or GPIO.input(GPIO_ECHO6)==1 :
     start = time.time()
-    print("Started")
+   # print("Started")
   #elif not GPIO.input(GPIO_ECHO1) and not GPIO.input(GPIO_ECHO2) and not GPIO.input(GPIO_ECHO3) and not GPIO.input(GPIO_ECHO4) and not GPIO.input(GPIO_ECHO5) and not GPIO.input(GPIO_ECHO6) :     # fallende Flanke, Endezeit speichern
   else: 
     stopp = time.time()
-    print("Stopped")
+   # print("Stopped")
     delta = stopp - start       # Zeitdifferenz und Entfernung berechnen
     distance = delta * SPEED_2
 
@@ -126,7 +127,7 @@ def measure_range(TRIG):            # Bildet Mittelwert von BURST Messungen
     pulse(TRIG)                     # Messung starten
     time.sleep(0.025)           # Warten, bis Messung zuende
     values.append(distance)     # Wert im Array speichern und aufsummieren
-    print("Messwert: %1.1f" % distance) # Kontrollausgabe
+   # print("Messwert: %1.1f" % distance) # Kontrollausgabe
     sum = sum + values[i]
   return sum/BURST;             # Mittelwert zurueckgeben
 
