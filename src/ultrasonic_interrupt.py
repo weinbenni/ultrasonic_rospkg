@@ -67,7 +67,7 @@ time.sleep(1)                   # Setup-Zeit fuer Sensor
 PULSE = 0.00001
 
 # Anzahl Messwerte fuer Mittelwertbildung
-BURST = 4
+BURST = 2
 
 # Schallgeschwindigkeit/2
 SPEED_2 = 17015
@@ -124,7 +124,7 @@ def measure_range(TRIG):            # Bildet Mittelwert von BURST Messungen
   sum = 0
   for i in range(0, BURST):
     pulse(TRIG)                     # Messung starten
-    time.sleep(0.040)           # Warten, bis Messung zuende
+    time.sleep(0.025)           # Warten, bis Messung zuende
     values.append(distance)     # Wert im Array speichern und aufsummieren
     print("Messwert: %1.1f" % distance) # Kontrollausgabe
     sum = sum + values[i]
