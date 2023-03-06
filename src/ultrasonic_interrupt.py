@@ -77,7 +77,7 @@ def publishSensor(sensor,measRange):
     rospy.init_node('ultrasonic_publisher', anonymous = True)
     msg = Range()
     msg.header.frame_id = sensor
-    msg.field_of_view = 50/146.0*3.14159
+    msg.field_of_view = 0.33 #19 degrees
     msg.radiation_type = msg.ULTRASOUND
     msg.max_range = 4
     msg.min_range = 0.02
