@@ -104,7 +104,7 @@ def pulse(TRIG):                    # Funktion zum Starten der Messung
   distance = 0                  # und Event starten
 
 
-def measure():                 # Callback-Funktion fuer ECHO
+def measure(x):                 # Callback-Funktion fuer ECHO
   global start
   global stopp
   global distance
