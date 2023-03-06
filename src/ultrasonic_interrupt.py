@@ -123,8 +123,6 @@ def measure_range(TRIG):            # Bildet Mittelwert von BURST Messungen
     time.sleep(0.040)           # Warten, bis Messung zuende
     values.append(distance)     # Wert im Array speichern und aufsummieren
     sum = sum + values[i]
-    print("Messwert: %1.1f" % distance) # Kontrollausgabe
-    time.sleep(0.05)
   return sum/BURST;             # Mittelwert zurueckgeben
 
 # do it
