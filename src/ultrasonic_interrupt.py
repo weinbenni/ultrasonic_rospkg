@@ -71,7 +71,7 @@ PULSE = 0.00001
 BURST = 2
 
 # Schallgeschwindigkeit/2
-SPEED_2 = 17015
+SPEED_2 = 170.15
 
 def publishSensor(sensor,measRange):
     pub = rospy.Publisher(sensor, Range, queue_size = 10)
