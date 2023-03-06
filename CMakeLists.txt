@@ -108,7 +108,7 @@ catkin_package(
 #  DEPENDS system_lib
 )
 
-catkin_install_python(PROGRAMS src/ultrasonic_test.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+catkin_install_python(PROGRAMS src/ultrasonic_interrupt.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 ###########
