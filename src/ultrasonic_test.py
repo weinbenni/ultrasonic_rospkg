@@ -100,17 +100,17 @@ if __name__ == '__main__':
                 rospy.get_master().getPid()
 
                 dist1 = distance(GPIO_TRIGGER1,GPIO_ECHO1)
-                publishSensor("US1", dist1 )
+                publishSensor("sonar_front_link", dist1 )
                 dist2 = distance(GPIO_TRIGGER2,GPIO_ECHO2)
-                publishSensor("US2", dist2 )
+                publishSensor("sonar_front_right_link", dist2 )
                 dist3 = distance(GPIO_TRIGGER3,GPIO_ECHO3)
-                publishSensor("US3", dist3 ) 
+                publishSensor("sonar_front_left_link", dist3 ) 
                 dist4 = distance(GPIO_TRIGGER4,GPIO_ECHO4)
-                publishSensor("US4", dist4 ) 
+                publishSensor("sonar_back_link", dist4 ) 
                 dist5 = distance(GPIO_TRIGGER5,GPIO_ECHO5)
-                publishSensor("US5", dist5 ) 
+                publishSensor("sonar_back_left_link", dist5 ) 
                 dist6 = distance(GPIO_TRIGGER6,GPIO_ECHO6)
-                publishSensor("US6", dist6 ) 
+                publishSensor("sonar_back_right_link", dist6 ) 
             
             except:
                 failed = True
